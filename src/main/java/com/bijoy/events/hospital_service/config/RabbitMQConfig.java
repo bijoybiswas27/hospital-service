@@ -22,6 +22,7 @@ public class RabbitMQConfig {
     private String patientCreationRoutingKey;
     @Value("${patient.charge.binding}")
     private String patientChargeRoutingKey;
+    private String patientChargeToCreationRoutingKey = "patient.*";
 
     @Bean
     public Queue patientCreationQueue() {
@@ -47,10 +48,18 @@ public class RabbitMQConfig {
 
     @Bean
     public Binding patientChargeBinding() {
-        return BindingBuilder.bind(patientCreationQueue())
+        return BindingBuilder.bind(patientChargeQueue())
                 .to(exchange())
                 .with(patientChargeRoutingKey);
     }
+
+    @Bean
+    public Binding patientChargeToCreationBinding() {
+        return BindingBuilder.bind(patientCreationQueue())
+                .to(exchange())
+                .with(patientChargeToCreationRoutingKey);
+    }
+
     @Bean
     public MessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();

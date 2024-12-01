@@ -14,9 +14,10 @@ public class MessageProducer {
     private RabbitTemplate rabbitTemplate;
     @Value("${patient.creation.binding}")
     String patientCreationKey;
+    @Value("${patient.charge.binding}")
+    String patientChargeKey;
     @Value("${patient.exchange.name}")
     String exchangeName;
-    String patientChargeKey = "patient.*";
 
     public MessageProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
