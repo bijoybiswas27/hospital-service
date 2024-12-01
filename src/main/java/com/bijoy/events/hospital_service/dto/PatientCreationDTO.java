@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientCreationDTO {
-    private String email;
+    private String sso;
     private String firstName;
     private String lastName;
     private int age;

@@ -23,12 +23,12 @@ public class MessageProducer {
     }
 
     public void sendPatientCreationMessage(PatientCreationDTO patientCreation) {
-        LOGGER.info("Sending patient details to rabbitMQ for patient: {}", patientCreation.getEmail());
+        LOGGER.info("Sending patient details to rabbitMQ for patient: {}", patientCreation.getSso());
         rabbitTemplate.convertAndSend(exchangeName, patientCreationKey, patientCreation);
     }
 
     public void sendPatientChargeMessage(PatientChargeDTO patientCharge) {
-        LOGGER.info("Sending charge details to rabbitMQ for patient: {}", patientCharge.getEmail());
+        LOGGER.info("Sending charge details to rabbitMQ for patient: {}", patientCharge.getSso());
         rabbitTemplate.convertAndSend(exchangeName, patientChargeKey, patientCharge);
     }
 }

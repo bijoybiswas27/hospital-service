@@ -39,11 +39,11 @@ public class PatientController {
         }
     }
 
-    @PostMapping("/{email}")
+    @PostMapping("/{sso}")
     public ResponseEntity<MessageResponseDTO> chargePatient(
-            @RequestBody PatientChargeDTO patientChargeDTO, @PathVariable String email) {
+            @RequestBody PatientChargeDTO patientChargeDTO, @PathVariable String sso) {
         MessageResponseDTO responseDTO = new MessageResponseDTO();
-        patientChargeDTO.setEmail(email);
+        patientChargeDTO.setSso(sso);
         try {
             patientMessageProducer.sendPatientChargeMessage(patientChargeDTO);
             responseDTO.setError(null);

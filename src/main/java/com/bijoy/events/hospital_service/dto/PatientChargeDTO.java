@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientChargeDTO {
-    private String email;
+    private String sso;
     private String test;
     private double cost;
 }
